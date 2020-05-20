@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="Informatica 2">
+   <title> Proyecto de Informatica </title>
+   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<style type="text/css">
+#menu li { margin: 0px 5px; padding: 0.1em 1em 0.5em 1em; 
+           background-color: #9933cc; width: 12%;float: left;
+           list-style-type: none; position: relative;  }
+ ul#menu {
+     margin: 0;
+     padding: 0;
+     list-style-type: none;}
+ #menu li {
+     background-color: #CDEEE1;
+     border: #5F4232 3px solid;
+     margin: 1px;}
+
+ #menu a {
+     text-decoration:none;
+     display: block;    
+     padding: 2px;}
+ul.navbar {
+    position: absolute;
+    top: 2em;
+    left: 1em;
+    width: 9em }
+</style>
+</head>
+<body style="background-color:#F3F4DD;"> 
+
+   <h1> <span style="font-family:cursive;"><span style="color:#541C26;">
+    <span style="font-size:150%;"><span style="font-style:oblique;">
+     Las Inform&aacute;ticas de los Plumones</span></span></span></h1>
+ <p style="color:#CD5C5C;"><span style="font-family:cursive;">
+     <span style="font-size:150%;"><span style="font-style:oblique;">
+        Bienvenido a los apuntes de las inform&aacute;ticas </span></span></span></span></p>  
+<div id="menu"><nav class="menu">
+       <ul style="background-color:#CDEEE1;">
+          <li id="Arbol" onmouseover="ver(1)" onmouseout="ocultar(1)">
+          <a href="#Arbol"><span style="font-family:cursive;">
+           <span style="color:#000000;">Arboles</span></span></a>
+             </li>
+          <li><a href="#Burbuja"><span style="font-family:cursive;">
+          <span style="color:#000000;">Burbuja</span></span></a> </li>
+          <li><a href="#POO"><span style="font-family:cursive;">
+            <span style="color:#000000;">POO</span></span></a> </li>
+          <li><a href="#Tabla"><span style="font-family:cursive;">
+           <span style="color:#000000;">Tablas Hash</span></span>
+   </a> </li></ul></nav></div>
+<br><br>
+<p style="color:#000000;"><span style="font-family:cursive;">
+     <span style="font-size:110%;"><span style="font-style:oblique;">
+        En esta pagina te presentamos algunos temas principales abarcados en la inform&aacute;tica con relaci&oacute;n al manejo de javascript  
+      </span></span></span></span></p>
+  <div class="section" id="Arboles">
+    <h1> <span style="font-family:cursive;"><span style="color:#0F2E16;">
+     <span style="font-style:oblique;"><span style="font-size:150%;">
+     &Aacute;rbol</span></span></span></h1>
+     <p style="color:#000000;"><span style="font-family:cursive;">
+      Tambi&eacute;n llamados &aacute;rboles de decisi&oacute;n. Consisten en aplicar todos los posibles 
+      movimientos, estos constan de ramas y nodos, tambi&eacute;n llamados los nodos como 
+      hojas o hijos, entre los nodos se encuentra el nodo padre el cual &uacute;nicamente 
+      representa el origen del &aacute;rbol. Estos &aacute;rboles sirven para efectuar b&uacute;squedas y 
+      adem&aacute;s son utilizados en la inteligencia artificial, evitando el uso de la fuerza
+      bruta pues imitan la forma de pensamiento humano.<br><br>
+      Cada rama representa una decisi&oacute;n y cada nodo representa una nueva estad&iacute;a, 
+      al realizar su camino parte por la izquierda. Un nodo es la unidad b&aacute;sica de un 
+      &aacute;rbol, puede representar un estado o un lugar geogr&aacute;fico. Una rama es la l&iacute;nea 
+      que se une a las aristas que pueden representar caminos o acciones, se les dice 
+      adyacentes si coinciden con el mismo v&eacute;rtice.  Existen diversos m&eacute;todos para 
+      recorrer los &aacute;rboles tales pueden ser: B&uacute;squeda por profundidad o por anchura. 
+      <br><br>
+      PASOS:<br>
+      1. Crear los arreglos o pilas. Uno es la pila de visitados y el otro es el arreglo de hoja/frontera o hijos. Preparar los arreglos en memoria.
+      <br>2. Ingresar los hijos del &uacute;ltimo al primero en el arreglo frontera.
+      <br>3. Sacar del arreglo frontera y agregarlo al arreglo visitados.
+      <br>4. Verificar que la pila de visitados contenga al destino o est&eacute; vac&iacute;a de lo contrario regresar al paso 2.
+      <span style="color:#0F2E16;">
+      <br><br> &nbsp;&nbsp;&nbsp;&nbsp;A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; De derecha a izquierda:
+      <br>&nbsp;&nbsp;/ &nbsp; \  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | D | C | B | A |    VISITA
+      <br>B &nbsp;&nbsp;&nbsp;&nbsp; C <br> 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | D | B | C | A |    FRONTERA
+      <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; D </span><br><br>
+      <span style="font-weight:bold;">Nota:</span>Se agrega del primero al &uacuteltimo. 
+      <br> Los &aacuterboles se encuentran ordenados indicando siempre el inicio de esos caso contrario de los llamados grafos, cuya similitud es m&aacutes exacta respecto al plano de la vida real. 
+      </span></p> 
+<button onclick="arbol();">Crear un &Aacuterbol</button>
+<script type="text/javascript">
+    function arbol(){
+   try {   
+      function node(value, left, right){ //Nodo 
+      this.value = value;
+      this.left = left;
+      this.right = right;
+     }
+      node.prototype.borrar =  function(sustituto){
+       this.value = sustituto;
+       this.sustituto = undefined;
+      }
+    var node6 = new node(prompt("Ingrese valor de Nodo Padre"), node3, node5);
+    var node3 = new node(prompt("Ingrese valor de Rama izq"),node1,node2);
+    var node1 = new node(prompt("Ingrese valor de su hijo izq"));
+    var node2 = new node(prompt("Ingrese valor de su hijo der"));
+    var node5 = new node(prompt("Ingrese valor de Rama Der"),node4);
+    var node4 = new node(prompt("Ingrese valor de su hijo"));
+   document.write("------("+node6.value + ")<br>");
+   document.write("------/---\\<br>");
+   document.write("---(" + node3.value + ")---(" + node5.value + ")<br>");
+   document.write("---/--\\-----\\<br>");
+   document.write("(" + node1.value + ")-("+node2.value +")----(" + node4.value + ")<br><br>" );
+   document.write("<br><br> Vuelva a cargar la pagina para regresar");
+   }
+   catch(error) {
+      alert("Error: "+error);
+   } }
+  </script>
+   </div>
+   <div class="section" id="Burbuja">
+    <h1> <span style="font-family:cursive;"><span style="color:#44A8C1;">
+    <span style="font-style:oblique;"><span style="font-size:150%;">
+    Burbuja</span></span></span></h1>
+    <p style="color:#000000;"><span style="font-family:cursive;">
+    Es un algoritmo de ordenamiento. Consiste en el ordenamiento de una serie de valores,
+    en revisar una lista varias veces para obtener un resultado ordenado. <br>
+    La f&oacutermula correspondiente es: <br>
+    <span style="font-weight:bold;"> &nbsp;&nbsp; N&uacutemero de veces (n) -1.</span><br>
+    El n&uacutemero de veces hace referencia a los n&uacutemeros que posee el ordenamiento, ejemplo: <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  6 3 1 4 9 8 7 <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Al ser 7 n&uacutemeros entonces el n&uacutemero de veces es igual a 7)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7-1= 6 veces que se ejecutar&aacute<br>
+    3 6<br>
+    3 1 6<br>
+    3 1 4 6 9<br>
+    3 1 4 6 8 9<br>
+    3 1 4 6 8 7 9 <br>
+    Realiza comparaciones hasta que quede en el lugar adecuado est&aacutetico.<br>
+    Existen igualmente otros tipos de algoritmos de ordenamiento tales como: Ordenamiento por inserci&oacuten, arreglo de selecci&oacuten, caparaz&oacuten, mergesort y ordenamiento r&aacutepido.
+    </p>
+   <button onclick="burbu();">Ordenar en burbuja (valores de un digito)</button>
+    <script type="text/javascript">
+         function burbu(){
+	function burbuja(miArray){
+		for(var c=1;c<miArray.length;c++){
+			for(var c2=0;c2<(miArray.length-c);c2++){
+				if(miArray[c2]>miArray[c2+1]){
+					k=miArray[c2+1];
+					miArray[c2+1]=miArray[c2];
+					miArray[c2]=k; } }} return miArray;}
+	miArray=Array(prompt("valor"),prompt("valor"),prompt("valor"),prompt("valor"),prompt("valor"),prompt("valor"),prompt("valor"));
+	document.write("Valores Iniciales<br>");
+	for(var c=0;c<miArray.length;c++){
+		document.write(miArray[c]+"<br>");}
+	arrayB=burbuja(miArray);
+	document.write("Ordenamiento Burbuja<br>");
+	for(c=0;c<arrayB.length;c++){
+		document.write(arrayB[c]+"<br>");}}
+	</script>
+    </script>
+    </div>
+  <div class="section" id="POO">
+   <h1> <span style="font-family:cursive;"><span style="color:#92349D;">
+     <span style="font-style:oblique;"><span style="font-size:150%;">
+     POO</span></span></span></h1>
+     <p style="color:#000000;"><span style="font-family:cursive;">
+     POO son las siglas de lo llamado Paradigma Orientado a Objetos, 
+     este es aquel que posee m&eacutetodos y propiedades, en sus objetos que en 
+     realidad intentan visualizarse como abstracciones de la vida real. 
+     El prop&oacutesito del POO es reutilizar mejor el c&oacutedigo que se crea, volviendolo 
+     siempre &uacutetil.<br>
+     En la programaci&oacuten:
+     Un <span style="font-weight:bold;"> objeto </span> es un conjunto de atributos 
+     (tambi&eacuten llamados caracter&iacutesticas) y sus m&eacutetodos 
+     (las acciones), que deriva de una clase. Es una abstracci&oacuten 
+     en la que se unen sentencias y datos, de tal forma que a un objeto s&oacutelo 
+     lo van a poder tratar los m&eacutetodos definidos para &eacutel, y estos m&eacutetodos est&aacuten 
+     preparados para trabajar espec&iacuteficamente con &eacutel.<br><br>
+     Por su parte un <span style="font-weight:bold;"> m&eacutetodo de objeto </span> es la acci&oacuten o 
+     funci&oacuten que puede realizar. Esta se encuentra en car&aacutecter p&uacuteblico. 
+     Describen el comportamiento de los objetos de una clase. Estos representan 
+     las operaciones que se pueden realizar con los objetos de la clase, La ejecuci&oacuten 
+     de un m&eacutetodo puede conducir a cambiar el estado del objeto<br><br>
+     Y deja as&iacute que la <span style="font-weight:bold;"> propiedad de un objeto</span>, tambi&eacuten llamados atributos, 
+     son las caracter&iacutesticas que posee el objeto para describir de forma &uacutenica y 
+     estas son de car&aacutecter privado. Son las caracter&iacutesticas individuales que diferencian
+     un objeto de otro y determinan su apariencia, estado u otras cualidades. Los 
+     atributos se guardan en variables denominadas de instancia, y cada objeto 
+     particular puede tener valores distintos para estas variables.
+     </p>
+       <button onclick="poo();">Crear un objeto (un gato)</button>
+    <script type="text/javascript">
+         function poo(){
+    function Gato(nombre) {
+       this.nombre = nombre;}
+     Gato.prototype.Jugar = function () {
+      alert (this.nombre + ' esta jugando con una cuerda ');}
+     Gato.prototype.Comer = function () {
+      alert (this.nombre + ' esta comiendo'); };
+    var Gato1 = new Gato(prompt("Nombre del gato"));
+    var op= Number(prompt("Elija una opcion para el gato 1)Jugar 2)Comer"));
+  if (op==1){
+    Gato1.Jugar();}
+  if (op==2){
+    Gato1.Comer();}}
+  </script>
+    </div>
+  <div class="section" id="Tabla">
+    <h1> <span style="font-family:cursive;"><span style="color:#6F2F25;">
+     <span style="font-style:oblique;"><span style="font-size:150%;">
+     Tablas Hash</span></span></span></h1>
+     <p style="color:#000000;"><span style="font-family:cursive;">
+     Son un m&eacutetodo de b&uacutesqueda basado en f&oacutermulas no en comparaciones; 
+     encontrar esta f&oacutermula no es f&aacutecil por lo que es recomendable seguir 
+     una serie de pasos. Se gu&iacutea por la heur&iacutestica, es decir un elemento extra 
+     para tomar mejores decisiones.<br> <br> 
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   PK (&iacutendice, que representa la tirada de datos)<br> <br>
+     El hash multiplicativo: Se basa en multiplicaciones, multiplicado por una constante y tomando los primeros bits del resultado. 
+     Otro m&eacutetodo de aplicarlo es calcular exponentes, y tomar los primeros bits del resultado.<br> <br>
+     El hash divisi&oacuten: Consiste en tomar el entero k y dividirlo entre m y m es el n&uacutemero de registros.<br> <br>
+     Es as&iacute como una tabla Hash es un contenedor asociativo (tipo diccionario) que permite un almacenamiento y 
+     posterior recuperaci&oacuten eficiente de elementos (denominados valores) a partir de otros objetos, llamados claves. Una tabla Hash puede 
+     ver como un conjunto de entradas. Cada una de estas entradas tiene asociada una clave &uacutenica, y por lo tanto, diferentes entradas de una misma 
+     tabla tendr&aacuten diferentes claves. Esto implica, que una clave identifica un&iacutevocamente a una entrada en una tabla Hash.<br> <br>
+     Las entradas de las tablas Hash est&aacuten compuestas por dos componentes, la propia clave y la informaci&oacuten que se almacena en dicha entrada.
+     </p> 
+     </div>
+</body>
+</html>
